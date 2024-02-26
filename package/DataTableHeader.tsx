@@ -128,6 +128,7 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
             titleStyle,
             filter,
             filtering,
+            headerActions,
           } = { ...defaultColumnProps, ...columnProps };
 
           return (
@@ -151,6 +152,7 @@ export const DataTableHeader = forwardRef(function DataTableHeader<T>(
               onSortStatusChange={onSortStatusChange}
               filter={filter}
               filtering={filtering}
+              headerActions={headerActions}
             />
           );
         })}

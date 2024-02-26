@@ -150,6 +150,11 @@ export type DataTableColumn<T = Record<string, unknown>> = {
    * Optional style passed to the column footer.
    */
   footerStyle?: MantineStyleProp;
+
+  /**
+   * Optional header actions similar to toggle, sort, and filter buttons.
+   */
+  headerActions?: React.ReactNode[];
 } & (
   | {
       /**

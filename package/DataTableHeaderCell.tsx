@@ -23,7 +23,7 @@ type DataTableHeaderCellProps<T> = {
   onSortStatusChange: DataTableSortProps<T>['onSortStatusChange'];
 } & Pick<
   DataTableColumn<T>,
-  'accessor' | 'sortable' | 'draggable' | 'toggleable' | 'resizable' | 'textAlign' | 'width' | 'filter' | 'filtering'
+  'accessor' | 'sortable' | 'draggable' | 'toggleable' | 'resizable' | 'textAlign' | 'width' | 'filter' | 'filtering' | 'headerActions'
 >;
 
 export function DataTableHeaderCell<T>({
@@ -43,6 +43,7 @@ export function DataTableHeaderCell<T>({
   onSortStatusChange,
   filter,
   filtering,
+  headerActions,
 }: DataTableHeaderCellProps<T>) {
   const { setSourceColumn, setTargetColumn, swapColumns, setColumnsToggle } = useDataTableColumnsContext();
   const [dragOver, setDragOver] = useState<boolean>(false);
@@ -176,6 +177,11 @@ export function DataTableHeaderCell<T>({
             {text}
           </Box>
         </Flex>
+        {headerActions && headerActions.map((action, index) => (
+          <Center key={index} className="mantine-datatable-header-cell-action-icon" role="img" aria-label={`Extra action ${index}`}>
+            {action}
+          </Center>
+        ))}
         {toggleable ? (
           <Center className="mantine-datatable-header-cell-toggleable-icon" role="img" aria-label="Toggle column">
             <ActionIcon size="xs" variant="light" onClick={handleColumnToggle}>
